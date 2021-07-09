@@ -1,11 +1,6 @@
 use crate::graph::Graph;
 use std::collections::HashMap;
 
-//Return the minimium node index
-//pub fn get_minimum(&q: &Vec<(&i64, &f64)>) -> i64 {
-
-
-
 //Returns the optimal path and path cost
 pub fn dijkstra(g: &Graph, weights: &Vec<f64>, step:f64) -> (Vec<i64>, f64) {
 

@@ -30,19 +30,20 @@ fn main() {
     let start = Instant::now();
     for _ in 0..100 {
         let n: u16 = r.gen();
-        println!("{}", n);
+        //println!("{}", n);
         let (path, path_cost) = path_planner::dijkstra(&g, &weights, 0.1);
     }
     println!("{}", "round 2");
     for _ in 0..100 {
         let n: u16 = r.gen();
-        println!("{}", n);
+        //println!("{}", n);
     }
     let duration = start.elapsed();
     println!("{:?}", duration);
     //println!("{:?}, {}", path, path_cost);
 
     //Finish establishing this
-    let env = environment::Environment::new(&mut r, np, area);
+    let env = environment::Environment::new(&mut r, np, area, 0, 8, 100);
     println!("{:?}", env);
+    env.get_threat_value(1., 2.);
 }

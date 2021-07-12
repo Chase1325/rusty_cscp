@@ -13,6 +13,12 @@ pub struct Threat {
     s_y: f64
 }
 
+impl Threat { 
+    pub fn get_threat(&self, x_pos: f64, y_pos: f64) -> f64 {
+        self.a * (-0.5 * (((x_pos - self.x)/self.s_x).powf(2.) + ((y_pos - self.y)/self.s_y).powf(2.))).exp()
+    }
+}
+
 #[derive(Debug)]
 pub struct Environment {
     threats: Vec<Threat>, 
@@ -21,7 +27,6 @@ pub struct Environment {
     res: usize,
     area: f64,
     workspace: Array2<f64>
-
 }
 
 impl Environment {
@@ -40,21 +45,32 @@ impl Environment {
         }
 
         //Generate the workspace;
-        let x_row = Vec::<f64>::new();
-        let y_row = Vec::<f64>::new();
+        let mut x_row = Vec::<f64>::new();
+        let mut y_row = Vec::<f64>::new();
 
-        for j in 0..res {
-            for i in 0..res {
+        for j in 0..=res {
+            for i in 0..=res {
                 let x = i as f64 * step;
                 let y = j as f64 * step;
-                x_row.push(x);
+                x_row.push(y);
                 y_row.push(x);
             }
         }
-        //TODO: Finish this implementation 
-        //let wsp = Array2
+        //Create the workspace
+        let mut wsp = Array2::<f64>::zeros((x_row.len(), 0));
+        let x_view = ArrayView::from(&x_row).into_shape((x_row.len(), 1)).unwrap();
+        let y_view = ArrayView::from(&y_row).into_shape((y_row.len(), 1)).unwrap();
+        wsp.append(Axis(1), x_view).unwrap();
+        wsp.append(Axis(1), y_view).unwrap();
 
-
-        Environment {threats: threats, start: start, goal: goal, res: 100, area: area, workspace: Array2::<f64>::eye(100)}
+        //println!("{:?}", wsp);
+        //Environment::get_threat_value(1., 2.);
+        Environment {threats: threats, start: start, goal: goal, res: res, area: area, workspace: wsp}
+        
+    }
+    pub fn get_threat_value(&self, x_pos: f64, y_pos: f64) -> f64 {
+        let sum: Vec<_> = self.threats.iter().map(|&x| println!("{:?}", x)).sum();
+        //println!("{}", sum);
+        2.
     }
 }

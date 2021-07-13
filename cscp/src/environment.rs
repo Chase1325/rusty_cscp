@@ -26,20 +26,20 @@ pub struct Environment {
     goal: i64,
     res: usize,
     area: f64,
-    workspace: Array2<f64>
+    pub workspace: Array2<f64>
 }
 
 impl Environment {
     pub fn new(seed: &mut StdRng, np: usize, area: f64, start: i64, goal: i64, res: usize) -> Environment {
 
         let dim = area.sqrt();
-        let step: f64 = dim/(res as f64);
+        let step: f64 = dim/((res as f64)-1.);
 
         //Generate the random threats given the number of parameters, seed, and area
         let mut threats = Vec::<Threat>::with_capacity(np);
         let amp_range = Uniform::from(1.0..10.);
-        let pos_range = Uniform::from(0.0..dim);
-        let std_range = Uniform::from((dim/100.)..(dim/10.));
+        let pos_range = Uniform::from(-dim/10.0..(dim+dim/10.0));
+        let std_range = Uniform::from((dim/50.)..(dim/10.));
         for _ in 0..np {
             threats.push(Threat{a: amp_range.sample(seed), x: pos_range.sample(seed), y: pos_range.sample(seed), s_x: std_range.sample(seed), s_y: std_range.sample(seed)});
         }
@@ -48,8 +48,8 @@ impl Environment {
         let mut x_row = Vec::<f64>::new();
         let mut y_row = Vec::<f64>::new();
 
-        for j in 0..=res {
-            for i in 0..=res {
+        for j in 0..res {
+            for i in 0..res {
                 let x = i as f64 * step;
                 let y = j as f64 * step;
                 x_row.push(y);
@@ -69,8 +69,28 @@ impl Environment {
         
     }
     pub fn get_threat_value(&self, x_pos: f64, y_pos: f64) -> f64 {
-        let sum: Vec<_> = self.threats.iter().map(|&x| println!("{:?}", x)).sum();
-        //println!("{}", sum);
-        2.
+        let mut sum: f64 = 0.;
+        for i in 0..self.threats.len() {
+            sum += self.threats[i].get_threat(x_pos, y_pos);
+        }
+        sum
     }
+
+    pub fn get_true_field(&self) -> Vec<f64> {
+
+        let iterator = self.workspace.axis_iter(Axis(0));
+        //println!("{:?}", iterator.next());
+        let true_field: Vec<f64> = iterator.map(|row| self.get_threat_value(row[0], row[1])).collect();
+        true_field
+    }
+
+    pub fn get_distances(&self) -> Vec<f64> { 
+        let iterator = self.workspace.axis_iter(Axis(0));
+        let goal_pose = self.workspace.slice(s![self.goal as usize, ..]);
+
+        println!("{:?}", goal_pose);
+        let distances: Vec<f64> = iterator.map(|row| ((row[0]-goal_pose[0]).powf(2.) + (row[1]-goal_pose[1]).powf(2.)).sqrt()).collect();
+        distances
+    }
+
 }

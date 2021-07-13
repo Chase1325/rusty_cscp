@@ -1,0 +1,12 @@
+C:\Users\clstl\Documents\GitHub\rusty_cscp\cscp\target\release\deps\rand_core-bc4b2b736f1c969d.rmeta: C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\lib.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\error.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\block.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\impls.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\le.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\os.rs
+
+C:\Users\clstl\Documents\GitHub\rusty_cscp\cscp\target\release\deps\librand_core-bc4b2b736f1c969d.rlib: C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\lib.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\error.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\block.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\impls.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\le.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\os.rs
+
+C:\Users\clstl\Documents\GitHub\rusty_cscp\cscp\target\release\deps\rand_core-bc4b2b736f1c969d.d: C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\lib.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\error.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\block.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\impls.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\le.rs C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\os.rs
+
+C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\lib.rs:
+C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\error.rs:
+C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\block.rs:
+C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\impls.rs:
+C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\le.rs:
+C:\Users\clstl\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.5.1\src\os.rs:

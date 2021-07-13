@@ -2,7 +2,7 @@ use crate::graph::Graph;
 use std::collections::HashMap;
 
 //Returns the optimal path and path cost
-pub fn dijkstra(g: &Graph, weights: &Vec<f64>, step:f64) -> (Vec<i64>, f64) {
+pub fn dijkstra(g: &Graph, weights: &Vec<f64>, step:f64) -> (Vec<usize>, f64) {
 
     fn get_minimum(q: &[(i64, f64)]) -> i64 {
         let vec_iter = q.iter();
@@ -25,7 +25,7 @@ pub fn dijkstra(g: &Graph, weights: &Vec<f64>, step:f64) -> (Vec<i64>, f64) {
     let mut previous: HashMap<i64, i64> = HashMap::new();
     let mut queue = Vec::new();
     let mut qed = false;
-    let mut path = vec![g.goal];
+    let mut path = vec![g.goal as usize];
     let mut opt_cost = f64::INFINITY;
 
     costs.insert(g.start, 0.);
@@ -46,10 +46,10 @@ pub fn dijkstra(g: &Graph, weights: &Vec<f64>, step:f64) -> (Vec<i64>, f64) {
             let mut waypoint = previous[&g.goal];
 
             while waypoint != g.start { 
-                path.push(waypoint);
+                path.push(waypoint as usize);
                 waypoint = previous[&waypoint];
             }
-            path.push(g.start);
+            path.push(g.start as usize);
 
             qed = true;
 
@@ -62,7 +62,7 @@ pub fn dijkstra(g: &Graph, weights: &Vec<f64>, step:f64) -> (Vec<i64>, f64) {
                 };
                 if !check_visit {
                     let mut weight = costs[&min_node];
-                    weight += step * weights[*edge as usize] + 1e-16;
+                    weight += step * weights[*edge as usize] + 1e-3;
                     let edgecost: f64 = match costs.get(edge) {
                         Some(e) => *e,
                         None => f64::INFINITY,

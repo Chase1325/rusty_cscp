@@ -9,3 +9,6 @@ edition = "2018"
 [dependencies]
 rand = "*"
 ndarray = "*"
+plotly = "*"
+itertools = "*"
+itertools-num = "*"

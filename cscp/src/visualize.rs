@@ -21,7 +21,7 @@ pub fn basic_heat_map(show: bool) {
     //println!("{}", plot.to_inline_html(Some("basic_heat_map")));
 }
 
-pub fn field_map(field: Vec<f64>, area: f64, res: usize, show_path: bool, path: Array2<f64>) {
+pub fn field_map(field: &Vec<f64>, area: f64, res: usize, show_path: bool, path: &Array2<f64>) {
 
     let dim = area.sqrt();
     let x = Array::linspace(0.0, dim, res).to_vec();
@@ -36,7 +36,7 @@ pub fn field_map(field: Vec<f64>, area: f64, res: usize, show_path: bool, path: 
     if show_path {
         let x_col = path.slice(s![.., 0]).to_vec();
         let y_col = path.slice(s![.., 1]).to_vec();
-        println!("{:?}", x_col);
+        //println!("{:?}", x_col);
 
         let path = Scatter::new(x_col, y_col).mode(Mode::LinesMarkers);
         plot.add_trace(path);
